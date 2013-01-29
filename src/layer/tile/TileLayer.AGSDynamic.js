@@ -44,7 +44,9 @@ L.TileLayer.AGSDynamic = L.TileLayer.extend({
 		var size = '&size=' + this.options.tileSize + ',' + this.options.tileSize;
 		var format = '&format=' + this.agsDynamicParams.format;
         var transparent = '&transparent=' + this.agsDynamicParams.transparent;
-        var url = this._url + '/export?' + 'bbox=' + bbox + size + format + transparent + '&f=image';
+        var imageSr = '&imageSR=' + this._map.options.crs.code.substr(5);
+        var bboxSr = '&bboxSR=' + this._map.options.crs.code.substr(5);
+        var url = this._url + '/export?' + 'bbox=' + bbox + size + format + transparent + imageSr + bboxSr + '&f=image';
         if (this.options.layers) {
             var layers = '&layers=' + this.agsDynamicParams.layers;
             url += layers;
